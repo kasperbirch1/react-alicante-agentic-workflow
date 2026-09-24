@@ -13,6 +13,7 @@ const speaker: Speaker = {
       title: "Opening Keynote: The Shape of Frontend in 2026",
       speaker: "Marta Fernandez",
       track: "Architecture",
+      level: "beginner",
       room: "Main Hall",
       startTime: "09:00",
       durationMinutes: 30,
