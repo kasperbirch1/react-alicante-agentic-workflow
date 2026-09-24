@@ -6,7 +6,7 @@ import {
 } from "@/components/atoms/card";
 import { Link } from "@/i18n/navigation";
 import type { Speaker } from "@/utils/speakers";
-import { Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 interface SpeakerCardProps {
   speaker: Speaker;
@@ -24,7 +24,7 @@ export function SpeakerCard({ speaker }: SpeakerCardProps) {
       <CardContent>
         <Flex as="ul" direction="column" gap="3" listStyleType="none">
           {speaker.sessions.map((session) => (
-            <Flex as="li" key={session.id}>
+            <Box as="li" key={session.id}>
               <Link
                 href={`/sessions/${session.id}`}
                 aria-label={`${session.title}, ${session.startTime}`}
@@ -40,7 +40,7 @@ export function SpeakerCard({ speaker }: SpeakerCardProps) {
                   <Text color="var(--text-primary)">{session.title}</Text>
                 </Flex>
               </Link>
-            </Flex>
+            </Box>
           ))}
         </Flex>
       </CardContent>

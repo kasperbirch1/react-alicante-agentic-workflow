@@ -8,7 +8,7 @@ export default async function SessionsPage() {
 
   return (
     <Flex direction="column" gap="8" flex="1" width="full" minWidth="0">
-      <PageHeading title="Schedule">
+      <PageHeading title="Schedule" lang="en">
         All sessions, by room and time. Times are local (CET).
       </PageHeading>
 

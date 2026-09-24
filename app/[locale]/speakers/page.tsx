@@ -3,16 +3,37 @@ import { PageHeading } from "@/components/atoms/page-heading";
 import { fetchSessions } from "@/services/sessions";
 import { groupSessionsBySpeaker } from "@/utils/speakers";
 import { Flex, Grid } from "@chakra-ui/react";
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export default async function SpeakersPage() {
-  const sessions = await fetchSessions();
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "SpeakersPage" });
+
+  return { title: t("title") };
+}
+
+export default async function SpeakersPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const [t, sessions] = await Promise.all([
+    getTranslations("SpeakersPage"),
+    fetchSessions(),
+  ]);
   const speakers = groupSessionsBySpeaker(sessions);
 
   return (
     <Flex direction="column" gap="8" flex="1" width="full">
-      <PageHeading title="Speakers">
-        Who is speaking at React Alicante, and when.
-      </PageHeading>
+      <PageHeading title={t("title")}>{t("description")}</PageHeading>
 
       <Grid
         templateColumns={{

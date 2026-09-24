@@ -4,25 +4,24 @@ import type { ReactNode } from "react";
 export function PageHeading({
   title,
   children,
+  lang,
 }: {
   title: string;
   children?: ReactNode;
+  /**
+   * Set this to "en" only when `title`/`children` are hardcoded English copy
+   * that hasn't been translated yet — it keeps that copy from being
+   * misannounced on the `/es` locale (WCAG 3.1.2). Omit it once the caller
+   * passes properly localized content. Tracked in issue #6.
+   */
+  lang?: string;
 }) {
-  // `title`/`children` are hardcoded English copy on every current call site
-  // (this component doesn't call getTranslations, since a Server Component
-  // reading next-intl at this level breaks static prerendering under this
-  // app's `cacheComponents: true` config). `lang="en"` keeps that copy
-  // correctly announced on the `/es` locale (WCAG 3.1.2) until it's translated.
   return (
-    <Flex direction="column" gap="2">
-      <Heading as="h1" fontSize="3xl" fontWeight="bold" lang="en">
+    <Flex direction="column" gap="2" lang={lang}>
+      <Heading as="h1" fontSize="3xl" fontWeight="bold">
         {title}
       </Heading>
-      {children ? (
-        <Text color="var(--text-secondary)" lang="en">
-          {children}
-        </Text>
-      ) : null}
+      {children ? <Text color="var(--text-secondary)">{children}</Text> : null}
     </Flex>
   );
 }
