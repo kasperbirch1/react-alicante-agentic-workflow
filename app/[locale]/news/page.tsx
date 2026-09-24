@@ -6,7 +6,7 @@ import { Suspense } from "react";
 export default function NewsPage() {
   return (
     <Flex direction="column" gap="8" flex="1" width="full">
-      <PageHeading title="News">
+      <PageHeading title="News" lang="en">
         What&apos;s on the Hacker News front page right now.
       </PageHeading>
 

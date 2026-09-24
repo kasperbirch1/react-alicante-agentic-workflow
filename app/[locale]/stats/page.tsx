@@ -22,7 +22,7 @@ export default async function StatsPage() {
 
   return (
     <Flex direction="column" gap="8" flex="1" width="full">
-      <PageHeading title="Stats">
+      <PageHeading title="Stats" lang="en">
         A quick visual read of the day: what tracks show up most, and which
         hours are busiest.
       </PageHeading>
