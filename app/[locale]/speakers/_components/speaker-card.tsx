@@ -16,7 +16,7 @@ export function SpeakerCard({ speaker }: SpeakerCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle as="h2" fontSize="lg">
+        <CardTitle as="h2" fontSize="md">
           {speaker.name}
         </CardTitle>
       </CardHeader>
