@@ -22,10 +22,12 @@ const speaker: Speaker = {
 };
 
 describe("SpeakerCard", () => {
-  it("shows the speaker's name", () => {
+  it("shows the speaker's name as a level-2 heading", () => {
     render(<SpeakerCard speaker={speaker} />);
 
-    expect(screen.getByText("Marta Fernandez")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Marta Fernandez" }),
+    ).toBeInTheDocument();
   });
 
   it("shows each session's start time and title", () => {
@@ -37,13 +39,14 @@ describe("SpeakerCard", () => {
     ).toBeInTheDocument();
   });
 
-  it("links each session to its session page", () => {
+  it("links each session to its session page, with the title in the accessible name", () => {
     render(<SpeakerCard speaker={speaker} />);
 
-    expect(screen.getByRole("link")).toHaveAttribute(
-      "href",
-      "/en/sessions/opening-keynote",
-    );
+    expect(
+      screen.getByRole("link", {
+        name: "Opening Keynote: The Shape of Frontend in 2026, 09:00",
+      }),
+    ).toHaveAttribute("href", "/en/sessions/opening-keynote");
   });
 
   it("renders a link per session when a speaker gives more than one", () => {
