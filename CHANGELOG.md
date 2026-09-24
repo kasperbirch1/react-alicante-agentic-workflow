@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.4.0] — 2026-09-24
+
+### Features
+
+- Speakers page: a new `/speakers` route listing every speaker, linked from
+  the site nav, with English and Spanish strings (#4)
+- Sessions show their level (beginner, intermediate, advanced), backed by a
+  new `session_level` enum and a NOT NULL `sessions.level` column (#7)
+
+### Maintenance
+
+- Trigger CI after enabling GitHub Actions on the fork
+- Bump version to 0.4.0
+
+## Test Suite
+
+| Suite          | Status     |
+| -------------- | ---------- |
+| ESLint         | ⏳ pending |
+| Type-check     | ⏳ pending |
+| Unit tests     | ⏳ pending |
+| Build (Vercel) | ⏳ pending |
+
+CI: pending — will run once the release branch is pushed
+
 ## [0.3.1] — 2026-09-24
 
 ### Bug Fixes
